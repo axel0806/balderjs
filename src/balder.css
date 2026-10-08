@@ -1,0 +1,140 @@
+/* 15.1 2026-08-31 */
+
+html {
+  height: 100%;
+  display: flex;
+}
+
+body {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  margin: 0;
+  overflow: hidden;
+}
+
+#canvasContainer {
+  flex: 1;
+  position: relative;
+  outline: none;
+  background-color: white;
+
+  canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 150px;
+  }
+
+  button,
+  input {
+    position: absolute;
+    background-color: transparent;
+    font: 16px consolas, monospace;
+  }
+}
+
+#ioContainer {
+  max-height: 100%;
+  overflow-y: auto;
+
+  margin: 8px;
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: transparent;
+
+  font-family: consolas, monospace;
+  line-break: anywhere;
+  white-space: pre-wrap;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.correct {
+  color: black;
+  background-color: palegreen;
+}
+
+.incorrect {
+  color: black;
+  background-color: lightsalmon;
+}
+
+.error {
+  color: red;
+}
+
+#_setInput,
+#_setOutput {
+  button {
+    align-items: center;
+  }
+
+  textarea {
+    flex: 1;
+    min-height: min-content;
+  }
+}
+
+.setter {
+  display: flex;
+  gap: 5px;
+
+  label {
+    flex: 1;
+    display: flex;
+
+    textarea {
+      flex: 1;
+      min-height: min-content;
+      resize: vertical;
+    }
+  }
+
+  button {
+    margin: 1em 0;
+  }
+}
+
+#logContainer {
+  max-height: 100%;
+  overflow-y: auto;
+
+  font-family: consolas, monospace;
+  line-break: anywhere;
+  white-space: pre-wrap;
+  position: fixed;
+  padding: 0 1em;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 1;
+  background-color: Canvas;
+
+  &::after {
+    position: absolute;
+    top: -4px;
+    right: 2px;
+    content: '🗙';
+  }
+
+  bottom: 0;
+  border-top: 1px solid;
+
+  &.top {
+    top: 0;
+    bottom: unset;
+    border-bottom: 1px solid;
+    border-top: unset;
+  }
+
+  &.no,
+  &:empty {
+    display: none;
+  }
+}
