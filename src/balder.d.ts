@@ -714,11 +714,15 @@
   * BalderJS
   *
   * Returns the factorial of `n`, the product 1 * 2 * ... * `n`.
-  * Returns -1 if `n` is not a whole number of at least 0.
+  * Pass `true` as the second argument to get a `bigint`, which stays exact for large `n`.
+  * Returns -1 (or -1n) if `n` is not a whole number of at least 0.
   * @example
-  * output(factorial(5))      // 120
+  * output(factorial(5))         // 120
+  * output(factorial(5, true))   // 120n
   */
- declare function factorial(n: number): number;
+ declare function factorial(n: number, useBigInt: true): bigint;
+ declare function factorial(n: number, useBigInt?: false): number;
+ declare function factorial(n: number, useBigInt?: boolean): number | bigint;
  /**
   * BalderJS
   *
@@ -753,11 +757,15 @@
   * BalderJS
   *
   * Returns the Fibonacci number `n`. The sequence starts 0, 1, 1, 2, 3, 5, ...
-  * Returns -1 if `n` is not a whole number of at least 0.
+  * Pass `true` as the second argument to get a `bigint`, which stays exact for large `n`.
+  * Returns -1 (or -1n) if `n` is not a whole number of at least 0.
   * @example
-  * output(fibonacci(6))      // 8
+  * output(fibonacci(6))         // 8
+  * output(fibonacci(6, true))   // 8n
   */
- declare function fibonacci(n: number): number;
+ declare function fibonacci(n: number, useBigInt: true): bigint;
+ declare function fibonacci(n: number, useBigInt?: false): number;
+ declare function fibonacci(n: number, useBigInt?: boolean): number | bigint;
  /**
   * BalderJS
   *

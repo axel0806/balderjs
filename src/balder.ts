@@ -1717,17 +1717,22 @@ function isPrime(n: number): boolean {
  * BalderJS
  *
  * Returns the factorial of `n`, the product 1 * 2 * ... * `n`.
- * Returns -1 if `n` is not a whole number of at least 0.
+ * Pass `true` as the second argument to get a `bigint`, which stays exact for large `n`.
+ * Returns -1 (or -1n) if `n` is not a whole number of at least 0.
  * @example
- * output(factorial(5))      // 120
+ * output(factorial(5))         // 120
+ * output(factorial(5, true))   // 120n
  */
-function factorial(n: number): number {
-  if (!Number.isInteger(n) || n < 0) return -1;
-  let r = 1;
+function factorial(n: number, useBigInt: true): bigint;
+function factorial(n: number, useBigInt?: false): number;
+function factorial(n: number, useBigInt?: boolean): number | bigint;
+function factorial(n: number, useBigInt = false): number | bigint {
+  if (!Number.isInteger(n) || n < 0) return useBigInt ? -1n : -1;
+  let r = 1n;
   for (let i = 1; i <= n; i++) {
-    r = i * r;
+    r = BigInt(i) * r;
   }
-  return r;
+  return useBigInt ? r : Number(r);
 }
 
 /**
@@ -1788,17 +1793,22 @@ function isSumOfTwoAbundants(n: number): boolean | -1 {
  * BalderJS
  *
  * Returns the Fibonacci number `n`. The sequence starts 0, 1, 1, 2, 3, 5, ...
- * Returns -1 if `n` is not a whole number of at least 0.
+ * Pass `true` as the second argument to get a `bigint`, which stays exact for large `n`.
+ * Returns -1 (or -1n) if `n` is not a whole number of at least 0.
  * @example
- * output(fibonacci(6))      // 8
+ * output(fibonacci(6))         // 8
+ * output(fibonacci(6, true))   // 8n
  */
-function fibonacci(n: number): number {
-  if (!Number.isInteger(n) || n < 0) return -1;
-  let a = 0, b = 1;
+function fibonacci(n: number, useBigInt: true): bigint;
+function fibonacci(n: number, useBigInt?: false): number;
+function fibonacci(n: number, useBigInt?: boolean): number | bigint;
+function fibonacci(n: number, useBigInt = false): number | bigint {
+  if (!Number.isInteger(n) || n < 0) return useBigInt ? -1n : -1;
+  let a = 0n, b = 1n;
   for (let i = 0; i < n; i++) {
     [a, b] = [b, a + b];
   }
-  return a;
+  return useBigInt ? a : Number(a);
 }
 
 /**
