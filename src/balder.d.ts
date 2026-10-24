@@ -695,6 +695,72 @@
  /**
   * BalderJS
   *
+  * Returns the triangle number `n`, the sum 1 + 2 + ... + `n`.
+  * Returns -1 if `n` is not a whole number of at least 1.
+  * @example
+  * output(triangleNum(4))      // 10
+  */
+ declare function triangleNum(n: number): number;
+ /**
+  * BalderJS
+  *
+  * Returns `true` if `n` is a prime number, otherwise `false`.
+  * @example
+  * output(isPrime(7))      // true
+  * output(isPrime(9))      // false
+  */
+ declare function isPrime(n: number): boolean;
+ /**
+  * BalderJS
+  *
+  * Returns the factorial of `n`, the product 1 * 2 * ... * `n`.
+  * Returns -1 if `n` is not a whole number of at least 0.
+  * @example
+  * output(factorial(5))      // 120
+  */
+ declare function factorial(n: number): number;
+ /**
+  * BalderJS
+  *
+  * Returns the sum of all proper divisors of `n`, the divisors smaller than `n`.
+  * Returns -1 if `n` is not a whole number of at least 1.
+  * @example
+  * output(divisorSum(12))      // 16
+  */
+ declare function divisorSum(n: number): number;
+ /**
+  * BalderJS
+  *
+  * Returns `true` if `n` is an amicable number, otherwise `false`.
+  * Two different numbers are amicable if each one's proper divisors sum to the other.
+  * @example
+  * output(isAmicable(220))      // true
+  * output(isAmicable(6))        // false
+  */
+ declare function isAmicable(n: number): boolean;
+ /**
+  * BalderJS
+  *
+  * Returns `true` if `n` can be written as the sum of two abundant numbers, otherwise `false`.
+  * A number is abundant if its proper divisors sum to more than the number itself.
+  * Returns -1 if `n` is not a whole number of at least 1.
+  * @example
+  * output(isSumOfTwoAbundants(24))      // true
+  * output(isSumOfTwoAbundants(20))      // false
+  */
+ declare function isSumOfTwoAbundants(n: number): boolean | -1;
+ /**
+  * BalderJS
+  *
+  * Returns the Fibonacci number `n`. The sequence starts 0, 1, 1, 2, 3, 5, ...
+  * Returns -1 if `n` is not a whole number of at least 0.
+  * @example
+  * output(fibonacci(6))      // 8
+  */
+ declare function fibonacci(n: number): number;
+ /**
+  * BalderJS
+  *
   * Returns a random number between `min` and `max`, both included.
   * @example
   * let die = randomNumber(1, 6)

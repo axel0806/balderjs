@@ -1360,7 +1360,6 @@ class Turtle {
   }
 
   private move() {
-    const style = getComputedStyle(canvasContainer);
     this.container.style.left = this.x - 10 + 'px';
     this.container.style.top = this.y - 10 + 'px';
 
@@ -1681,6 +1680,125 @@ function pointFromPolar(
  */
 function radians(degAngle: number): number {
   return (degAngle * Math.PI) / 180;
+}
+
+/**
+ * BalderJS
+ *
+ * Returns the triangle number `n`, the sum 1 + 2 + ... + `n`.
+ * Returns -1 if `n` is not a whole number of at least 1.
+ * @example
+ * output(triangleNum(4))      // 10
+ */
+function triangleNum(n: number): number {
+  if (n < 1 || n % 1 !== 0) return -1;
+  return (n * (n + 1)) / 2;
+}
+
+/**
+ * BalderJS
+ *
+ * Returns `true` if `n` is a prime number, otherwise `false`.
+ * @example
+ * output(isPrime(7))      // true
+ * output(isPrime(9))      // false
+ */
+function isPrime(n: number): boolean {
+  if (!Number.isInteger(n) || n < 2) return false;
+  if (n === 2) return true;
+  if (n % 2 === 0) return false;
+  for (let i = 2; i * i <= n; i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+
+/**
+ * BalderJS
+ *
+ * Returns the factorial of `n`, the product 1 * 2 * ... * `n`.
+ * Returns -1 if `n` is not a whole number of at least 0.
+ * @example
+ * output(factorial(5))      // 120
+ */
+function factorial(n: number): number {
+  if (!Number.isInteger(n) || n < 0) return -1;
+  let r = 1;
+  for (let i = 1; i <= n; i++) {
+    r = i * r;
+  }
+  return r;
+}
+
+/**
+ * BalderJS
+ *
+ * Returns the sum of all proper divisors of `n`, the divisors smaller than `n`.
+ * Returns -1 if `n` is not a whole number of at least 1.
+ * @example
+ * output(divisorSum(12))      // 16
+ */
+function divisorSum(n: number): number {
+  if (n < 1 || !Number.isInteger(n)) return -1;
+  let s = 0;
+  for (let i = 1; i * i <= n; i++) {
+    if (n % i === 0) {
+      if (i !== n) s += i;
+      const other = n / i;
+      if (other !== i && other !== n) s += other;
+    }
+  }
+  return s;
+}
+
+/**
+ * BalderJS
+ *
+ * Returns `true` if `n` is an amicable number, otherwise `false`.
+ * Two different numbers are amicable if each one's proper divisors sum to the other.
+ * @example
+ * output(isAmicable(220))      // true
+ * output(isAmicable(6))        // false
+ */
+function isAmicable(n: number): boolean {
+  if (n < 1 || !Number.isInteger(n)) return false;
+  const d = divisorSum(n);
+  return d !== n && divisorSum(d) === n;
+}
+
+/**
+ * BalderJS
+ *
+ * Returns `true` if `n` can be written as the sum of two abundant numbers, otherwise `false`.
+ * A number is abundant if its proper divisors sum to more than the number itself.
+ * Returns -1 if `n` is not a whole number of at least 1.
+ * @example
+ * output(isSumOfTwoAbundants(24))      // true
+ * output(isSumOfTwoAbundants(20))      // false
+ */
+function isSumOfTwoAbundants(n: number): boolean | -1 {
+  if (n < 1 || !Number.isInteger(n)) return -1;
+  for (let i = 1; i < n; i++) {
+    if (divisorSum(i) > i && divisorSum(n - i) > n - i) return true;
+  }
+  return false;
+}
+
+/**
+ * BalderJS
+ *
+ * Returns the Fibonacci number `n`. The sequence starts 0, 1, 1, 2, 3, 5, ...
+ * Returns -1 if `n` is not a whole number of at least 0.
+ * @example
+ * output(fibonacci(6))      // 8
+ */
+function fibonacci(n: number): number {
+  if (!Number.isInteger(n) || n < 0) return -1;
+  let a = 0, b = 1;
+  for (let i = 0; i < n; i++) {
+    [a, b] = [b, a + b];
+  }
+  return a;
 }
 
 /**
