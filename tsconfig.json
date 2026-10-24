@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["jest", "node"],
+    "types": ["node"],
     "target": "ES2022",
     "useDefineForClassFields": true,
     "module": "ESNext",
