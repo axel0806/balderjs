@@ -713,6 +713,20 @@
  /**
   * BalderJS
   *
+  * Returns `true` if `n` is pandigital, meaning it has `k` digits and uses each digit 1 to `k` exactly once.
+  * Example: 2143 is pandigital, 2133 and 1234567890 are not. Returns `false` for numbers below 1.
+  * Pass `true` as the second argument to check a `bigint` exactly; `false` (the default) reads `n` as a number.
+  * @example
+  * output(isPandigital(2143))         // true
+  * output(isPandigital(2133))         // false
+  * output(isPandigital(12345678901234567890n, true))   // false
+  */
+ declare function isPandigital(n: bigint, useBigInt: true): boolean;
+ declare function isPandigital(n: number, useBigInt?: false): boolean;
+ declare function isPandigital(n: number | bigint, useBigInt?: boolean): boolean;
+ /**
+  * BalderJS
+  *
   * Returns the factorial of `n`, the product 1 * 2 * ... * `n`.
   * Pass `true` as the second argument to get a `bigint`, which stays exact for large `n`.
   * Returns -1 (or -1n) if `n` is not a whole number of at least 0.
@@ -753,6 +767,41 @@
   * output(isSumOfTwoAbundants(20))      // false
   */
  declare function isSumOfTwoAbundants(n: number): boolean | -1;
+ /**
+  * BalderJS
+  *
+  * Returns `n` written in binary (base 2), as text. For example, 11 gives "1011".
+  * Works for whole numbers from 0 to 4294967295. Other values are converted as 32-bit integers.
+  * @example
+  * output(binary(11))           // 1011
+  * output(binary(0))            // 0
+  */
+ declare function binary(n: number): string;
+ /**
+  * BalderJS
+  *
+  * Returns `true` if the text of `value` reads the same forwards and backwards, otherwise `false`.
+  * Works with any type: `value` is converted to text first, so numbers, strings and arrays all work.
+  * @example
+  * output(isPalindromic(121))           // true
+  * output(isPalindromic("abba"))        // true
+  * output(isPalindromic(123))           // false
+  */
+ declare function isPalindromic(value: unknown): boolean;
+ /**
+  * BalderJS
+  *
+  * Returns `n` with its digits reversed, for example 123 becomes 321.
+  * Pass `true` as the second argument to get a `bigint`, which stays exact for large `n`.
+  * Returns -1 (or -1n) if `n` is not a whole number of at least 0.
+  * @example
+  * output(palindrome(123))          // 321
+  * output(palindrome(120))          // 21
+  * output(palindrome(123, true))    // 321n
+  */
+ declare function palindrome(n: bigint, useBigInt: true): bigint;
+ declare function palindrome(n: number, useBigInt?: false): number;
+ declare function palindrome(n: number | bigint, useBigInt?: boolean): number | bigint;
  /**
   * BalderJS
   *
